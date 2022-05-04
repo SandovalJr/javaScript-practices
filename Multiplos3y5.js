@@ -16,9 +16,9 @@ function fizzbuzz() {
 // Let permite declarar variables limitando su alcance (osea en ucierto bloque)
 
 function prueba() {
-  var  i = "contratado";
+  var i = "contratado";
 
-  for (var  i = 0; i < 2; i++) {
+  for (var i = 0; i < 2; i++) {
     //
     //
     //
@@ -27,5 +27,21 @@ function prueba() {
   console.log(i);
 }
 
-
 prueba();
+
+
+// funciones flecha y funciones normales
+
+console.log("----------");
+let user = {
+  name: "GFG",
+  gfg1: () => {
+    //indefinido el name
+    console.log("hello " + this.name); // no 'this' binding here
+  },
+  gfg2() {
+    console.log("Welcome to " + this.name); // 'this' binding works here
+  },
+};
+user.gfg1();
+user.gfg2();
