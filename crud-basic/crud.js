@@ -30,11 +30,12 @@ function datatable() {
     let filaActual = document.getElementById("tblDatos").insertRow(i);
 
     for (let j = 0; j < 5; j++) {
-      var city = filaActual.insertCell(j);
-      var edad = filaActual.insertCell(j);
-      var email = filaActual.insertCell(j);
-      var name = filaActual.insertCell(j);
-      var id = filaActual.insertCell(j);
+      var id = filaActual.insertCell(0);
+      var name = filaActual.insertCell(1);
+      var email = filaActual.insertCell(2);
+      var edad = filaActual.insertCell(3);
+      var city = filaActual.insertCell(4);
+      var op = filaActual.insertCell(5);
     }
 
     id.innerHTML = arraydata[i].id;
@@ -42,11 +43,17 @@ function datatable() {
     email.innerHTML = arraydata[i].email;
     edad.innerHTML = arraydata[i].edad;
     city.innerHTML = arraydata[i].city;
+    op.innerHTML = `<button onClick="editar(this)">Edit</button>
+    <button onClick="eliminar(this)">Delete</button>`;
   }
 
   contadordatatable++;
 }
 
 function eliminar(id) {
-  arraydata.splice(id, 1);
+  console.log('eliminar');
+}
+
+function editar(id) {
+  console.log('editar');
 }

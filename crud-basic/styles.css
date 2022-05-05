@@ -3,3 +3,16 @@
   align-items: center;
   justify-content: center;
 }
+
+button {
+  border-radius: 5px;
+  background: transparent;
+  color: aliceblue;
+  margin-top: 4px;
+  border: 1px solid skyblue;
+}
+
+button:hover {
+  background: skyblue;
+  color: black;
+}
