@@ -8,7 +8,7 @@ function senddata() {
   let email = document.getElementById("email").value;
   let edad = document.getElementById("edad").value;
   let city = document.getElementById("city").value;
-  let id = arraydata.length + 1;
+  let id = arraydata.length;
 
   let jsondata = {
     id,
@@ -38,22 +38,30 @@ function datatable() {
       var op = filaActual.insertCell(5);
     }
 
-    id.innerHTML = arraydata[i].id;
+    // id.setAttribute("id", "ide");
+
+    id.innerHTML = arraydata[i].id + 1;
     name.innerHTML = arraydata[i].name;
     email.innerHTML = arraydata[i].email;
     edad.innerHTML = arraydata[i].edad;
     city.innerHTML = arraydata[i].city;
-    op.innerHTML = `<button onClick="editar(this)">Edit</button>
-    <button onClick="eliminar(this)">Delete</button>`;
+
+    // let ide = document.getElementById(ide);
+    // console.log(arraydata[i].id);
+    let ide = arraydata[i].id;
+
+    op.innerHTML = `<button onClick="editar()">Edit</button>
+    <button onClick="eliminar(${ide})">Delete</button>`;
   }
 
   contadordatatable++;
 }
 
-function eliminar(id) {
-  console.log('eliminar');
+function eliminar(ide) {
+  console.log(ide);
+
+  arraydata.splice(ide, 1);
+  console.log(arraydata);
 }
 
-function editar(id) {
-  console.log('editar');
-}
+function editar() {}

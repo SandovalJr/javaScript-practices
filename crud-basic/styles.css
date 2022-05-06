@@ -16,3 +16,7 @@ button:hover {
   background: skyblue;
   color: black;
 }
+
+.titulo{
+font-size: 35px;
+}
