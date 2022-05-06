@@ -2,26 +2,32 @@ let arraydata = [];
 let contadordatatable = 0;
 
 function senddata() {
-  // console.log('funciona');
   let name = document.getElementById("name").value;
-  //   console.log(name);
-  let email = document.getElementById("email").value;
-  let edad = document.getElementById("edad").value;
-  let city = document.getElementById("city").value;
-  let id = arraydata.length;
+  // console.log(validate(name));
+  let resultadoname = arraydata.find((info) => info.name == name);
 
-  let jsondata = {
-    id,
-    name,
-    email,
-    edad,
-    city,
-  };
+  if (resultadoname == undefined) {
+    let email = document.getElementById("email").value;
+    let edad = document.getElementById("edad").value;
+    let city = document.getElementById("city").value;
+    let id = arraydata.length;
 
-  arraydata.push(jsondata);
-  // console.log(arraydata);
+    let jsondata = {
+      id,
+      name,
+      email,
+      edad,
+      city,
+    };
+    arraydata.push(jsondata);
+    // console.log(arraydata);
+    datatable();
+  } else {
+    // alert("ya esta registrado");
 
-  datatable();
+
+    
+  }
 }
 
 function datatable() {
@@ -49,7 +55,7 @@ function datatable() {
     // console.log(arraydata[i].id);
     let ide = arraydata[i].id;
 
-    op.innerHTML = `<button onClick="editar(${ide})">Edit</button>
+    op.innerHTML = `<button onClick="editar_datos(${ide})">Edit</button>
     <button onClick="eliminar(${ide})">Delete</button>`;
   }
 
@@ -59,17 +65,25 @@ function datatable() {
 function eliminar(ide) {
   // console.log(ide);
   arraydata.splice(ide, 1);
-
   document.getElementsByTagName("table")[0].setAttribute("id", "ide");
   document.getElementById("ide").deleteRow(ide + 1);
   // console.log(arraydata);
-
   resetForm();
 }
 
-function editar(ide) {
-  console.log("ide editar" + ide);
-  let editdata;
+function editar_datos(ide) {
+  // console.log("ide editar" + ide);
+  let editdata = arraydata.find((data) => data.id == ide);
+  console.log(editdata);
+
+  let name_e = (document.getElementById("name").value = editdata.name);
+  let email_e = (document.getElementById("email").value = editdata.email);
+  let edad = (document.getElementById("edad").value = editdata.edad);
+  let city = (document.getElementById("city").value = editdata.city);
+}
+
+function editar_actualizar() {
+  resetForm();
 }
 
 function resetForm() {
