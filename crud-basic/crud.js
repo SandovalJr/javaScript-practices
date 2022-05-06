@@ -38,8 +38,7 @@ function datatable() {
       var op = filaActual.insertCell(5);
     }
 
-    // id.setAttribute("id", "ide");
-
+    id.setAttribute("id", "ide");
     id.innerHTML = arraydata[i].id + 1;
     name.innerHTML = arraydata[i].name;
     email.innerHTML = arraydata[i].email;
@@ -50,7 +49,7 @@ function datatable() {
     // console.log(arraydata[i].id);
     let ide = arraydata[i].id;
 
-    op.innerHTML = `<button onClick="editar()">Edit</button>
+    op.innerHTML = `<button onClick="editar(${ide})">Edit</button>
     <button onClick="eliminar(${ide})">Delete</button>`;
   }
 
@@ -58,10 +57,25 @@ function datatable() {
 }
 
 function eliminar(ide) {
-  console.log(ide);
-
+  // console.log(ide);
   arraydata.splice(ide, 1);
-  console.log(arraydata);
+
+  document.getElementsByTagName("table")[0].setAttribute("id", "ide");
+  document.getElementById("ide").deleteRow(ide + 1);
+  // console.log(arraydata);
+
+  resetForm();
 }
 
-function editar() {}
+function editar(ide) {
+  console.log("ide editar" + ide);
+  let editdata;
+}
+
+function resetForm() {
+  document.getElementById("name").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("edad").value = "";
+  document.getElementById("city").value = "";
+  selectedRow = null;
+}
