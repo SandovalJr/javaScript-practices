@@ -24,25 +24,13 @@ function senddata() {
     // console.log(arraydata);
     datatable();
   } else {
-    // console.log(arraydata);
     console.log("entra a editar");
     let editar_act1 = arraydata.find((data) => data.name == name);
-    // alert("ya esta registrado");
-    // console.log(editar_act1.id);
-    // actualizar data array
+    let ideedit = editar_act1.id;
 
-    let elementIndex = arraydata.findIndex((info) => info.id == editar_act1.id);
-    // valores
-    let nameEA = document.getElementById("name").value;
-    console.log(nameEA);
-    arraydata[elementIndex].name = nameEA;
-    console.log(arraydata);
-    resetForm();
-    // editar_actualizar(editar_act1);
-
-    // let nea = document.getElementById("name").value;
-    // console.log(nea);
+    editar_actualizar(ideedit);
   }
+  console.log(arraydata);
 }
 
 function datatable() {
@@ -97,12 +85,12 @@ function editar_datos(ide) {
   document.getElementById("city").value = editdata.city;
 }
 
-function editar_actualizar(personadata) {
-  console.log("data persona");
-  // console.log(personadata.id);
-  // console.log(personadata.name);
-
-  console.log("editar actualizar");
+function editar_actualizar(id_data) {
+  // console.log(id_data);
+  arraydata[id_data].name = document.getElementById("name").value;
+  arraydata[id_data].email = document.getElementById("email").value;
+  arraydata[id_data].edad = document.getElementById("edad").value;
+  arraydata[id_data].city = document.getElementById("city").value;
 
   resetForm();
 }
