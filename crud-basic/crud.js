@@ -3,8 +3,9 @@ let contadordatatable = 0;
 
 function senddata() {
   let name = document.getElementById("name").value;
-  // console.log(validate(name));
+  console.log(name);
   let resultadoname = arraydata.find((info) => info.name == name);
+  console.log(resultadoname);
 
   if (resultadoname == undefined) {
     let email = document.getElementById("email").value;
@@ -23,10 +24,24 @@ function senddata() {
     // console.log(arraydata);
     datatable();
   } else {
+    // console.log(arraydata);
+    console.log("entra a editar");
+    let editar_act1 = arraydata.find((data) => data.name == name);
     // alert("ya esta registrado");
+    // console.log(editar_act1.id);
+    // actualizar data array
 
+    let elementIndex = arraydata.findIndex((info) => info.id == editar_act1.id);
+    // valores
+    let nameEA = document.getElementById("name").value;
+    console.log(nameEA);
+    arraydata[elementIndex].name = nameEA;
+    console.log(arraydata);
+    resetForm();
+    // editar_actualizar(editar_act1);
 
-    
+    // let nea = document.getElementById("name").value;
+    // console.log(nea);
   }
 }
 
@@ -74,15 +89,21 @@ function eliminar(ide) {
 function editar_datos(ide) {
   // console.log("ide editar" + ide);
   let editdata = arraydata.find((data) => data.id == ide);
-  console.log(editdata);
+  // console.log(editdata);
 
-  let name_e = (document.getElementById("name").value = editdata.name);
-  let email_e = (document.getElementById("email").value = editdata.email);
-  let edad = (document.getElementById("edad").value = editdata.edad);
-  let city = (document.getElementById("city").value = editdata.city);
+  document.getElementById("name").value = editdata.name;
+  document.getElementById("email").value = editdata.email;
+  document.getElementById("edad").value = editdata.edad;
+  document.getElementById("city").value = editdata.city;
 }
 
-function editar_actualizar() {
+function editar_actualizar(personadata) {
+  console.log("data persona");
+  // console.log(personadata.id);
+  // console.log(personadata.name);
+
+  console.log("editar actualizar");
+
   resetForm();
 }
 
